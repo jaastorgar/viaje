@@ -1,0 +1,15 @@
+{% extends 'viajes/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2>Bienvenido a la Agencia de Viajes</h2>
+<ul>
+    {% for paquete in paquetes %}
+    <li>
+        <a href="{% url 'detalles_paquete' paquete.id %}">{{ paquete.nombre }}</a>
+        - {{ paquete.destino }} - ${{ paquete.precio }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

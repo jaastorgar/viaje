@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Gestión de Viajes{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Agencia de Viajes</h1>
+        <nav>
+            <a href="{% url 'home' %}">Inicio</a>
+            <a href="#">Paquetes</a>
+            <a href="#">Reservas</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Agencia de Viajes</p>
+    </footer>
+</body>
+</html>
