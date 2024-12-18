@@ -1,0 +1,19 @@
+<h2>Registrar Depósito</h2>
+<form method="POST">
+    {% csrf_token %}
+    <label>Apoderado:</label>
+    <select name="apoderado">
+        {% for apoderado in apoderados %}
+        <option value="{{ apoderado.id }}">{{ apoderado.nombre_usuario }}</option>
+        {% endfor %}
+    </select>
+    <label>Contrato:</label>
+    <select name="contrato">
+        {% for contrato in contratos %}
+        <option value="{{ contrato.id }}">{{ contrato.cliente }} - {{ contrato.destino }}</option>
+        {% endfor %}
+    </select>
+    <label>Monto:</label>
+    <input type="number" name="monto" step="0.01" required>
+    <button type="submit">Registrar</button>
+</form>
