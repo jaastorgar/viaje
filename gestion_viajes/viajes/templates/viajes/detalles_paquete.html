@@ -1,10 +1,5 @@
-{% extends 'viajes/base.html' %}
-
-{% block title %}Detalles del Paquete{% endblock %}
-
-{% block content %}
-<h2>{{ paquete.nombre }}</h2>
+<h1>{{ paquete.nombre }}</h1>
 <p><strong>Destino:</strong> {{ paquete.destino }}</p>
 <p><strong>Precio:</strong> ${{ paquete.precio }}</p>
+<a href="{% url 'reservar_paquete' paquete.id %}">Reservar este Paquete</a>
 <a href="{% url 'home' %}">Volver</a>
-{% endblock %}

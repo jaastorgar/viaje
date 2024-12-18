@@ -9,7 +9,10 @@
     <li>
         <a href="{% url 'detalles_paquete' paquete.id %}">{{ paquete.nombre }}</a>
         - {{ paquete.destino }} - ${{ paquete.precio }}
+        <!-- Enlace para reservar -->
+        <a href="{% url 'reservar_paquete' paquete.id %}" style="margin-left: 10px;">Reservar</a>
     </li>
     {% endfor %}
 </ul>
+
 {% endblock %}

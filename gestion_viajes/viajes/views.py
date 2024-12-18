@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Paquete, Contrato, Usuario, Deposito
+from .models import Paquete, Contrato, Usuario, Deposito, Paquete, Reserva
 
 # Página principal: muestra los paquetes turísticos
 def home(request):
@@ -53,3 +53,32 @@ def estado_cuenta(request, apoderado_id):
         'depositos': depositos,
         'total_aportes': total_aportes,
     })
+
+
+
+# Página principal: muestra todos los paquetes turísticos
+def home(request):
+    paquetes = Paquete.objects.all()
+    return render(request, 'viajes/home.html', {'paquetes': paquetes})
+
+# Detalles de un paquete específico
+def detalles_paquete(request, paquete_id):
+    paquete = get_object_or_404(Paquete, id=paquete_id)
+    return render(request, 'viajes/detalles_paquete.html', {'paquete': paquete})
+
+# Reservar un paquete
+def reservar_paquete(request, paquete_id):
+    paquete = get_object_or_404(Paquete, id=paquete_id)
+    usuario = Usuario.objects.first()  # Simula un usuario logueado (modifica esto según tu lógica de autenticación)
+    
+    if request.method == 'POST':
+        Reserva.objects.create(usuario=usuario, paquete=paquete)
+        return redirect('mis_reservas')
+
+    return render(request, 'viajes/reservar_paquete.html', {'paquete': paquete})
+
+# Mostrar las reservas del usuario
+def mis_reservas(request):
+    usuario = Usuario.objects.first()  # Simula un usuario logueado
+    reservas = Reserva.objects.filter(usuario=usuario)
+    return render(request, 'viajes/mis_reservas.html', {'reservas': reservas})

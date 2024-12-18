@@ -1,0 +1,10 @@
+<h1>Mis Reservas</h1>
+<ul>
+    {% for reserva in reservas %}
+    <li>
+        <strong>{{ reserva.paquete.nombre }}</strong> - {{ reserva.paquete.destino }} - Fecha: {{ reserva.fecha_reserva }}
+        <span>Estado: {{ reserva.estado }}</span>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{% url 'home' %}">Volver</a>

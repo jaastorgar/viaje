@@ -1,0 +1,8 @@
+<h1>Reservar {{ paquete.nombre }}</h1>
+<p><strong>Destino:</strong> {{ paquete.destino }}</p>
+<p><strong>Precio:</strong> ${{ paquete.precio }}</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirmar Reserva</button>
+</form>
+<a href="{% url 'home' %}">Cancelar</a>
