@@ -1,0 +1,21 @@
+{% extends 'viajes/base.html' %}
+
+{% block title %}Lista de Paquetes{% endblock %}
+
+{% block content %}
+<h2>Paquetes Disponibles</h2>
+
+{% if paquetes %}
+    <ul>
+        {% for paquete in paquetes %}
+        <li>
+            <strong>{{ paquete.nombre }}</strong> - {{ paquete.destino }} - ${{ paquete.precio }}
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No hay paquetes disponibles actualmente.</p>
+{% endif %}
+
+<a href="{% url 'home' %}">Volver al inicio</a>
+{% endblock %}

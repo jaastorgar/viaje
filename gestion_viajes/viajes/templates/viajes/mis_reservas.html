@@ -1,10 +1,27 @@
-<h1>Mis Reservas</h1>
-<ul>
-    {% for reserva in reservas %}
-    <li>
-        <strong>{{ reserva.paquete.nombre }}</strong> - {{ reserva.paquete.destino }} - Fecha: {{ reserva.fecha_reserva }}
-        <span>Estado: {{ reserva.estado }}</span>
-    </li>
-    {% endfor %}
-</ul>
-<a href="{% url 'home' %}">Volver</a>
+{% extends 'viajes/base.html' %}
+
+{% block title %}Mis Reservas{% endblock %}
+
+{% block content %}
+<h2>Mis Reservas</h2>
+
+{% if reservas %}
+    <ul>
+        {% for reserva in reservas %}
+        <li>
+            {{ reserva.paquete.nombre }} - {{ reserva.paquete.destino }} - ${{ reserva.paquete.precio }}
+            <form method="POST" action="{% url 'eliminar_reserva' reserva.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background-color: red; color: white; border: none; cursor: pointer;">
+                    Eliminar
+                </button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No tienes reservas actualmente.</p>
+{% endif %}
+
+<a href="{% url 'home' %}">Volver al inicio</a>
+{% endblock %}

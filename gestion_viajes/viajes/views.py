@@ -66,6 +66,10 @@ def detalles_paquete(request, paquete_id):
     paquete = get_object_or_404(Paquete, id=paquete_id)
     return render(request, 'viajes/detalles_paquete.html', {'paquete': paquete})
 
+def lista_paquetes(request):
+    paquetes = Paquete.objects.all()
+    return render(request, 'viajes/lista_paquetes.html', {'paquetes': paquetes})
+
 # Reservar un paquete
 def reservar_paquete(request, paquete_id):
     paquete = get_object_or_404(Paquete, id=paquete_id)
@@ -82,3 +86,8 @@ def mis_reservas(request):
     usuario = Usuario.objects.first()  # Simula un usuario logueado
     reservas = Reserva.objects.filter(usuario=usuario)
     return render(request, 'viajes/mis_reservas.html', {'reservas': reservas})
+
+def eliminar_reserva(request, reserva_id):
+    reserva = get_object_or_404(Reserva, id=reserva_id)
+    reserva.delete()
+    return redirect('mis_reservas')

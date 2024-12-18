@@ -4,15 +4,29 @@
 
 {% block content %}
 <h2>Bienvenido a la Agencia de Viajes</h2>
+
+<!-- Enlaces principales -->
+<ul>
+    <li>
+        <a href="{% url 'lista_paquetes' %}">Ver todos los Paquetes</a>
+    </li>
+    <li>
+        <a href="{% url 'mis_reservas' %}">Ver mis Reservas</a>
+    </li>
+</ul>
+
+<!-- Listado de Paquetes -->
+<h3>Paquetes Destacados</h3>
 <ul>
     {% for paquete in paquetes %}
     <li>
         <a href="{% url 'detalles_paquete' paquete.id %}">{{ paquete.nombre }}</a>
         - {{ paquete.destino }} - ${{ paquete.precio }}
         <!-- Enlace para reservar -->
-        <a href="{% url 'reservar_paquete' paquete.id %}" style="margin-left: 10px;">Reservar</a>
+        <a href="{% url 'reservar_paquete' paquete.id %}" style="margin-left: 10px; color: green;">Reservar</a>
     </li>
+    {% empty %}
+    <li>No hay paquetes disponibles actualmente.</li>
     {% endfor %}
 </ul>
-
 {% endblock %}
