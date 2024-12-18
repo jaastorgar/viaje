@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'gestion_viajes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'viaje',   
-        'USER': 'root',
-        'PASSWORD': 'Mamita10.123',
-        'HOST': 'localhost',  # Cambia si estás usando un servidor externo
-        'PORT': '3306',       # Puerto predeterminado de MySQL
+        'NAME': 'viaje',            # Nombre de la base de datos
+        'USER': 'root',             # Usuario de MySQL
+        'PASSWORD': 'Mamita10.123',  # Contraseña
+        'HOST': 'localhost',        # Servidor
+        'PORT': '3306',             # Puerto predeterminado
     }
 }
 
