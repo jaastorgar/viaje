@@ -1,0 +1,7 @@
+<h2>Estado de Cuenta: {{ apoderado.nombre_usuario }}</h2>
+<ul>
+    {% for deposito in depositos %}
+    <li>Monto: ${{ deposito.monto }} - Fecha: {{ deposito.fecha }}</li>
+    {% endfor %}
+</ul>
+<p>Total Aportes: ${{ total_aportes }}</p>
